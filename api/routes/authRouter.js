@@ -42,7 +42,7 @@ router.post('/register', async (req, res) => {
             id: newUser._id
         }, process.env.SECRET)
         
-        res.status(400).json({ error: null, msg: "Cadastro realizado!", token: token, userId: newUser._id })
+        res.status(200).json({ error: null, msg: "Cadastro realizado!", token: token, userId: newUser._id })
     } catch(err) {
         res.status(400).json({ error: err })
     }
@@ -70,7 +70,7 @@ router.post('/login', async (req, res) => {
         id: user._id
     }, process.env.SECRET)
 
-    res.json({ error: null, msg: "Autenticado!", token: token, userId: user._id })
+    res.status(200).json({ error: null, msg: "Autenticado!", token: token, userId: user._id })
 })
 
 module.exports = router

@@ -2,10 +2,11 @@ const mongoose = require('mongoose')
 
 const transactionSchema = new mongoose.Schema({
     userId: mongoose.ObjectId,
-    category: mongoose.ObjectId,
     value: Number,
     description: String,
-    type: String
+    category: String,
+    type: String,
+    date: { type: Date, default: Date.now }
 })
 
 const Transaction = mongoose.model('transaction', transactionSchema)
