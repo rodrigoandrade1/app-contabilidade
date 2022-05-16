@@ -188,7 +188,7 @@ export default {
       }
 
       try {
-        const res = await axios.get('http://localhost:3000/transaction/receitas', headers)
+        const res = await axios.get('https://contabilidade-unit.herokuapp.com/transaction/receitas', headers)
         this.receitas = res.data.transactions
       } catch (e) {
         console.error(e)
@@ -201,7 +201,7 @@ export default {
       }
 
       try {
-        const res = await axios.get('http://localhost:3000/transaction/despesas', headers)
+        const res = await axios.get('https://contabilidade-unit.herokuapp.com/transaction/despesas', headers)
         this.despesas = res.data.transactions
       } catch (e) {
         console.error(e)

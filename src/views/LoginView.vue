@@ -54,7 +54,7 @@ export default {
         password: this.password
       }
 
-      axios.post('http://localhost:3000/auth/login', data)
+      axios.post('https://contabilidade-unit.herokuapp.com/auth/login', data)
         .then((response) => {
           console.log(response)
           this.$store.commit('authenticate', { token: response.data.token, userId: response.data.userId })

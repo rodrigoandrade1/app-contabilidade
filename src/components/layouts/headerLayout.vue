@@ -44,7 +44,7 @@ export default {
       }
 
       try {
-        const res = await axios.get('http://localhost:3000/user/', headers)
+        const res = await axios.get('https://contabilidade-unit.herokuapp.com/user/', headers)
         this.data = res.data.msg
       } catch (e) {
         console.error(e)

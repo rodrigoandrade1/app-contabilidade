@@ -71,7 +71,7 @@ export default {
         headers: { Authorization: `Bearer ${token}` }
       }
 
-      axios.post('http://localhost:3000/transaction/create', data, headers)
+      axios.post('https://contabilidade-unit.herokuapp.com/transaction/create', data, headers)
         .then((response) => {
           document.getElementById('closemodal').click()
           this.alertText = null

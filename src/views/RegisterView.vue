@@ -68,7 +68,7 @@ export default {
         confirmpassword: this.confirmpassword
       }
 
-      axios.post('http://localhost:3000/auth/register', data)
+      axios.post('https://contabilidade-unit.herokuapp.com/auth/register', data)
         .then((response) => {
           this.$store.commit('authenticate', { token: response.data.token, userId: response.data.userId })
           this.alertText = response.data.msg

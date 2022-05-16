@@ -14,21 +14,18 @@ app.use('/auth', authRouter)
 userRouter = require('./routes/userRouter')
 app.use('/user', userRouter)
 
-transactionRouter = require('./routes/TransactionRouter')
+transactionRouter = require('./routes/transactionRouter')
 app.use('/transaction', transactionRouter)
 
-categoryRouter = require('./routes/CategoryRouter')
+categoryRouter = require('./routes/categoryRouter')
 app.use('/category', categoryRouter)
 
-const dbName = process.env.DB_NAME
-const dbPort = process.env.DB_PORT
-
-mongoose.connect(`mongodb://localhost/${dbName}`,
+mongoose.connect(`mongodb+srv://rdr1go:${process.env.DB_PASSWORD}@cluster0.pvdok.mongodb.net/?retryWrites=true&w=majority`,
 {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
 .then(() => {
-    app.listen(dbPort)
+    app.listen(process.env.PORT || 3000)
 }).catch((err) =>
     console.log(err))
