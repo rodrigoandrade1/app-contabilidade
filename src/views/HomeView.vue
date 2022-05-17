@@ -11,7 +11,7 @@
                   Receitas desse mês
                 </div>
                 <div class="card-body">
-                  <div class="chart-wrapper d-flex justify-content-center">
+                  <div class="chart-wrapper d-flex justify-content-center align-items-center" style="max-height: 180px; min-height: 180px">
                     <barChart/>
                   </div>
                 </div>
@@ -19,11 +19,11 @@
             </div>
             <div class="col-5">
               <div class="card shadow">
-                <div class="card-header palette-2 text-white">
-                  Despesas por categorias
+                <div class="card-header palette-2 text-white text-nowrap" >
+                  <span style="font-size: .93em">Despesas por categorias</span>
                 </div>
                 <div class="card-body">
-                  <div class="chart-wrapper d-flex justify-content-center">
+                  <div class="chart-wrapper d-flex justify-content-center align-items-center" style="max-height: 180px; min-height: 180px">
                     <pieChart/>
                   </div>
                 </div>
@@ -36,43 +36,29 @@
             <div class="card-header palette-2 text-white">
               Estatísticas
             </div>
-            <div class="card-body d-flex justify-content-around">
+            <div class="card-body d-flex justify-content-around align-items-center" style="min-height: 212px">
               <div>
-                <div class="fw-bold">Saldo total</div>
+                <div class="fw-bold">Receitas hoje</div>
                 <div class="text-success">
                 <i class="fa-solid fa-plus text-success"></i>
                 R$ 19,700.00
                 </div>
-                <div class="text-danger">
-                <i class="fa-solid fa-minus text-danger"></i>
-                R$ 8,950.00</div>
-
                 <hr>
-
-                <div class="mt-3 fw-bold">Próximo mês</div>
-                <div class="text-success">
-                <i class="fa-solid fa-plus text-success"></i>
-                R$ 15,700.00</div>
+                <div class="mt-3 fw-bold">Despesas hoje</div>
                 <div class="text-danger">
                 <i class="fa-solid fa-minus text-danger"></i>
                 R$ 2,950.00</div>
               </div>
               <div>
-                <div class="fw-bold">Mês Anterior</div>
+                <div class="fw-bold">Receita últimos 30 dias</div>
                 <div class="text-success">
                 <i class="fa-solid fa-plus text-success"></i>
                 R$ 19,700.00
                 </div>
-                <div class="text-danger">
-                <i class="fa-solid fa-minus text-danger"></i>
-                R$ 8,950.00</div>
 
                 <hr>
 
-                <div class="mt-3 fw-bold">Próximo mês</div>
-                <div class="text-success">
-                <i class="fa-solid fa-plus text-success"></i>
-                R$ 15,700.00</div>
+                <div class="mt-3 fw-bold">Despesa últimos 30 dias</div>
                 <div class="text-danger">
                 <i class="fa-solid fa-minus text-danger"></i>
                 R$ 2,950.00</div>
@@ -91,8 +77,20 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item" v-for="receita in receitas" :key="receita._id">
                 <i class="fa-solid fa-plus text-success"></i>
-                  {{receita.description}} <span class="fw-bold">|</span> {{receita.category}} <span class="fw-bold">|</span> {{receita.date}} <span class="fw-bold">|</span> <span class="text-success fw-bold">R${{receita.value}}</span>
+
+                <span class="text-success fw-bold">
+                  R${{receita.value}}</span> |
+
+                  {{receita.category}} |
+
+                  {{getFormatedData(receita.date)}}
+
+                  <div class="ms-3">
+                    <span class="fw-bold" style="font-size: .8em">{{receita.description}}</span>
+                  </div>
+
               </li>
+
               <li class="list-group-item" v-if="receitas.length == 0">Nenhuma receita encontrada!</li>
             </ul>
             <nav aria-label="Page navigation example">
@@ -125,7 +123,7 @@
             <ul class="list-group list-group-flush">
               <li class="list-group-item" v-for="despesa in despesas" :key="despesa._id">
               <i class="fa-solid fa-minus text-danger"></i>
-              {{despesa.description}} <span class="fw-bold">|</span> {{despesa.category}} <span class="fw-bold">|</span> {{despesa.date}} <span class="fw-bold">|</span> <span class="text-danger fw-bold">{{despesa.value}}</span>
+              {{despesa.description}} <span class="fw-bold">|</span> {{despesa.category}} <span class="fw-bold">|</span> {{getFormatedData(despesa.date)}} <span class="fw-bold">|</span> <span class="text-danger fw-bold">R${{despesa.value}}</span>
               </li>
               <li class="list-group-item" v-if="despesas.length == 0">Nenhuma despesa encontrada!</li>
             </ul>
@@ -206,6 +204,10 @@ export default {
       } catch (e) {
         console.error(e)
       }
+    },
+    getFormatedData (date) {
+      const data = new Date(date)
+      return (data.getDate() + '/' + (data.getMonth() + 1) + '/' + data.getFullYear() + ' - ' + data.getHours() + ':' + data.getMinutes())
     }
   }
 }

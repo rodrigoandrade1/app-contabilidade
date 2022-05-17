@@ -58,6 +58,7 @@ router.post('/create', verifyToken, async (req, res) => {
     const value = req.body.value
     const description = req.body.description
     const category = req.body.category
+    const date = req.body.date
     const type = req.body.type
 
     if (value == null || description == null || type == null || category == null){
@@ -69,6 +70,7 @@ router.post('/create', verifyToken, async (req, res) => {
         value: value,
         description: description,
         category: category,
+        date: date,
         type: type
     })
 

@@ -1,6 +1,10 @@
 <template>
-  <div style="height:177px;width:360px;">
-    <vue3-chart-js v-bind="{ ...barChart }" />
+  <div class="w-100">
+    <div class="row">
+      <div class="col-11 col-lg-11 col-xl-12">
+        <vue3-chart-js v-bind="{ ...barChart }" />
+      </div>
+    </div>
   </div>
 </template>
 

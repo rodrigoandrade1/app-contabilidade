@@ -63,6 +63,7 @@ export default {
         value: this.valorReceita,
         description: this.descricaoReceita,
         category: this.categoriaReceita,
+        dataReceita: this.dataReceita,
         type: 'Receita'
       }
 

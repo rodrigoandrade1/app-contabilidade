@@ -2,8 +2,8 @@
   <div>
     <header-layout/>
     <div class="container">
-      <div class="row">
-        <div class="col-4">
+      <div class="row g-3">
+        <div class="col-12 col-lg-4">
           <div class="card">
             <div class="card-header palette-2 text-white">
               Configurações da empresa
@@ -18,7 +18,7 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <div class="card">
             <div class="card-header palette-2 text-white">
               Nova categoria
@@ -32,7 +32,7 @@
             </div>
           </div>
         </div>
-        <div class="col-4">
+        <div class="col-12 col-lg-4">
           <div class="card">
             <div class="card-header palette-2 text-white">
               Alterar senha
