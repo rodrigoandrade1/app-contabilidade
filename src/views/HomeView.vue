@@ -88,7 +88,6 @@
                   <div class="ms-3">
                     <span class="fw-bold" style="font-size: .8em">{{receita.description}}</span>
                   </div>
-
               </li>
 
               <li class="list-group-item" v-if="receitas.length == 0">Nenhuma receita encontrada!</li>
@@ -122,8 +121,18 @@
             </div>
             <ul class="list-group list-group-flush">
               <li class="list-group-item" v-for="despesa in despesas" :key="despesa._id">
-              <i class="fa-solid fa-minus text-danger"></i>
-              {{despesa.description}} <span class="fw-bold">|</span> {{despesa.category}} <span class="fw-bold">|</span> {{getFormatedData(despesa.date)}} <span class="fw-bold">|</span> <span class="text-danger fw-bold">R${{despesa.value}}</span>
+                <i class="fa-solid fa-plus text-danger"></i>
+
+                <span class="text-minus fw-bold text-danger">
+                  R${{despesa.value}}</span> |
+
+                  {{despesa.category}} |
+
+                  {{getFormatedData(despesa.date)}}
+
+                  <div class="ms-3">
+                    <span class="fw-bold" style="font-size: .8em">{{despesa.description}}</span>
+                  </div>
               </li>
               <li class="list-group-item" v-if="despesas.length == 0">Nenhuma despesa encontrada!</li>
             </ul>

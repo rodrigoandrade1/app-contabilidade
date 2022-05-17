@@ -17,13 +17,13 @@
 
             <label for="categoriaReceita">Categoria</label>
             <select class="form-select mb-3" name="" id="categoriaReceita" v-model="categoriaReceita" >
-                <option select>Selecione uma categoria</option>
+                <option value="Outros">Outros</option>
                 <option value="Veiculos">Veiculos</option>
                 <option value="Funcionários">Funcionários</option>
             </select>
 
             <label for="dataReceita">Data</label>
-            <input type="date" class="form-control mb-3" id="dataReceita" v-model="dataReceita" >
+            <input type="datetime-local" class="form-control mb-3" id="dataReceita" v-model="dataReceita" >
 
             <div v-if="alertText" :class="alertClass" role="alert">
               {{alertText}}
@@ -59,13 +59,17 @@ export default {
     async novaReceita (e) {
       e.preventDefault()
 
+      const jsonDate = new Date(this.dataReceita)
+
       const data = {
         value: this.valorReceita,
         description: this.descricaoReceita,
         category: this.categoriaReceita,
-        dataReceita: this.dataReceita,
+        date: jsonDate,
         type: 'Receita'
       }
+
+      console.log(this.dataReceita)
 
       const token = this.$store.getters.token
       const headers = {
@@ -79,6 +83,7 @@ export default {
           this.valorReceita = null
           this.descricaoReceita = null
           this.categoriaReceita = null
+          this.dataReceita = null
           this.$parent.getReceitas()
         })
         .catch((err) => {

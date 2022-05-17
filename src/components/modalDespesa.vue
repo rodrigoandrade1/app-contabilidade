@@ -23,7 +23,7 @@
             </select>
 
             <label for="dataDespesa">Data</label>
-            <input type="date" class="form-control mb-3" id="dataDespesa" v-model="dataDespesa" >
+            <input type="datetime-local" class="form-control mb-3" id="dataDespesa" v-model="dataDespesa" >
 
             <div v-if="alertText" :class="alertClass" role="alert">
               {{alertText}}
@@ -59,10 +59,13 @@ export default {
     async novaDespesa (e) {
       e.preventDefault()
 
+      const jsonDate = new Date(this.dataDespesa)
+
       const data = {
         value: this.valorDespesa,
         description: this.descricaoDespesa,
         category: this.categoriaDespesa,
+        date: jsonDate,
         type: 'Despesa'
       }
 
@@ -78,6 +81,7 @@ export default {
           this.valorDespesa = null
           this.descricaoDespesa = null
           this.categoriaDespesa = null
+          this.dataDespesa = null
           this.$parent.getDespesas()
         })
         .catch((err) => {

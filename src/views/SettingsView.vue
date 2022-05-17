@@ -24,10 +24,15 @@
               Nova categoria
             </div>
             <div class="card-body">
-              <label for="name" class="form-label">Nome da categoria</label>
-              <input type="text" class="form-control mb-3" id="name">
-              <div class="d-flex justify-content-end">
-                <button class="btn btn-primary btn-sm">Adicionar categoria</button>
+              <form @submit="createCategory">
+                <label for="title" class="form-label">Nome da categoria</label>
+                <input type="text" v-model="title" class="form-control mb-3" id="title">
+                <div class="d-flex justify-content-end">
+                  <button class="btn btn-primary btn-sm">Adicionar categoria</button>
+                </div>
+              </form>
+              <div v-if="categoryAlertText" :class="categoryAlertClass" role="alert">
+                {{categoryAlertText}}
               </div>
             </div>
           </div>
@@ -47,6 +52,7 @@
               <div class="d-flex justify-content-end">
                 <button class="btn btn-primary btn-sm">Confirmar</button>
               </div>
+
             </div>
           </div>
         </div>
@@ -57,11 +63,52 @@
 
 <script>
 import headerLayout from '@/components/layouts/headerLayout.vue'
+import axios from 'axios'
 
 export default {
   name: 'SettingsView',
   components: {
     headerLayout
+  },
+  data () {
+    return {
+      title: null
+    }
+  },
+  methods: {
+    async createCategory (e) {
+      e.preventDefault()
+
+      const data = {
+        title: this.title
+      }
+
+      const token = this.$store.getters.token
+      const headers = {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+
+      axios.post('https://contabilidade-unit.herokuapp.com/category/create', data, headers)
+        .then((response) => {
+          this.title = null
+          this.alertText = response.data.msg
+          setTimeout(() => {
+            this.alertText = null
+          }, 3000)
+        })
+        .catch((err) => {
+          if (err.response) {
+            this.categoryAlertText = err.response.data.error
+            this.categoryAlertClass = 'alert alert-danger'
+
+            setTimeout(() => {
+              this.alertText = null
+            }, 3000)
+          } else {
+            console.log(err)
+          }
+        })
+    }
   }
 }
 </script>
