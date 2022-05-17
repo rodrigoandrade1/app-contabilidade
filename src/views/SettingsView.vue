@@ -31,7 +31,7 @@
                   <button class="btn btn-primary btn-sm">Adicionar categoria</button>
                 </div>
               </form>
-              <div v-if="categoryAlertText" :class="categoryAlertClass" role="alert">
+              <div v-if="categoryAlertText" :class="categoryAlertClass + ' mt-2' " role="alert">
                 {{categoryAlertText}}
               </div>
             </div>
@@ -72,7 +72,9 @@ export default {
   },
   data () {
     return {
-      title: null
+      title: null,
+      categoryAlertText: null,
+      categoryAlertClass: null
     }
   },
   methods: {
@@ -91,9 +93,11 @@ export default {
       axios.post('https://contabilidade-unit.herokuapp.com/category/create', data, headers)
         .then((response) => {
           this.title = null
-          this.alertText = response.data.msg
+          this.categoryAlertText = response.data.msg
+          this.categoryAlertClass = 'alert alert-success'
+
           setTimeout(() => {
-            this.alertText = null
+            this.categoryAlertText = null
           }, 3000)
         })
         .catch((err) => {
@@ -102,7 +106,7 @@ export default {
             this.categoryAlertClass = 'alert alert-danger'
 
             setTimeout(() => {
-              this.alertText = null
+              this.categoryAlertText = null
             }, 3000)
           } else {
             console.log(err)

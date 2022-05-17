@@ -17,9 +17,8 @@
 
             <label for="categoriaDespesa">Categoria</label>
             <select class="form-select mb-3" name="" id="categoriaDespesa" v-model="categoriaDespesa" >
-                <option select>Selecione uma categoria</option>
-                <option value="Veiculos">Veiculos</option>
-                <option value="Funcionários">Funcionários</option>
+              <option v-for="category in categories" :key="category.id" :value="category.title">{{category.title}}</option>
+              <option value="Outros">Outros</option>
             </select>
 
             <label for="dataDespesa">Data</label>
@@ -52,20 +51,41 @@ export default {
       categoriaDespesa: null,
       dataDespesa: null,
       alertText: null,
-      alertClass: null
+      alertClass: null,
+      categories: []
     }
   },
+  created () {
+    this.getCategories()
+  },
   methods: {
+    async getCategories () {
+      const token = this.$store.getters.token
+      const headers = {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+
+      try {
+        const res = await axios.get('https://contabilidade-unit.herokuapp.com/category', headers)
+        this.categories = res.data.categories
+      } catch (e) {
+        console.error(e)
+      }
+    },
     async novaDespesa (e) {
       e.preventDefault()
 
-      const jsonDate = new Date(this.dataDespesa)
+      if (this.dataReceita != null) {
+        this.jsonDate = new Date(this.dataReceita)
+      } else {
+        this.jsonDate = new Date(Date.now())
+      }
 
       const data = {
         value: this.valorDespesa,
         description: this.descricaoDespesa,
         category: this.categoriaDespesa,
-        date: jsonDate,
+        date: this.jsonDate,
         type: 'Despesa'
       }
 

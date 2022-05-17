@@ -41,27 +41,37 @@
                 <div class="fw-bold">Receitas hoje</div>
                 <div class="text-success">
                 <i class="fa-solid fa-plus text-success"></i>
-                R$ 19,700.00
+                R$ {{receitasHoje}}
                 </div>
                 <hr>
                 <div class="mt-3 fw-bold">Despesas hoje</div>
                 <div class="text-danger">
                 <i class="fa-solid fa-minus text-danger"></i>
-                R$ 2,950.00</div>
+                R$ {{despesasHoje}}</div>
               </div>
               <div>
                 <div class="fw-bold">Receita últimos 30 dias</div>
                 <div class="text-success">
                 <i class="fa-solid fa-plus text-success"></i>
-                R$ 19,700.00
+                R$ 0
                 </div>
-
                 <hr>
-
                 <div class="mt-3 fw-bold">Despesa últimos 30 dias</div>
                 <div class="text-danger">
                 <i class="fa-solid fa-minus text-danger"></i>
-                R$ 2,950.00</div>
+                R$ 0</div>
+              </div>
+              <div>
+                <div class="fw-bold">Receitas totais</div>
+                <div class="text-success">
+                <i class="fa-solid fa-plus text-success"></i>
+                R$ {{receitasHoje}}
+                </div>
+                <hr>
+                <div class="mt-3 fw-bold">Despesas totais</div>
+                <div class="text-danger">
+                <i class="fa-solid fa-minus text-danger"></i>
+                R$ {{despesasHoje}}</div>
               </div>
             </div>
           </div>
@@ -180,7 +190,9 @@ export default {
   data () {
     return {
       receitas: [],
-      despesas: []
+      despesas: [],
+      receitasHoje: null,
+      despesasHoje: null
     }
   },
   created () {
@@ -197,6 +209,10 @@ export default {
       try {
         const res = await axios.get('https://contabilidade-unit.herokuapp.com/transaction/receitas', headers)
         this.receitas = res.data.transactions
+
+        this.receitas.forEach(e => {
+          this.receitasHoje += e.value
+        })
       } catch (e) {
         console.error(e)
       }
@@ -210,13 +226,17 @@ export default {
       try {
         const res = await axios.get('https://contabilidade-unit.herokuapp.com/transaction/despesas', headers)
         this.despesas = res.data.transactions
+
+        this.despesas.forEach(e => {
+          this.despesasHoje += e.value
+        })
       } catch (e) {
         console.error(e)
       }
     },
     getFormatedData (date) {
       const data = new Date(date)
-      return (data.getDate() + '/' + (data.getMonth() + 1) + '/' + data.getFullYear() + ' - ' + data.getHours() + ':' + data.getMinutes())
+      return (data.getDate() + '/' + (data.getMonth() + 1) + '/' + data.getFullYear() + ' - ' + (('0' + data.getHours()).slice(-2)) + ':' + (('0' + data.getMinutes()).slice(-2)))
     }
   }
 }
