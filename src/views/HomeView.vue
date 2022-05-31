@@ -4,27 +4,15 @@
     <div class="container">
       <div class="row g-2">
         <div class="col-12 col-lg-6">
-          <div class="row gx-2">
-            <div class="col-7">
+          <div class="row g-2">
+            <div class="col-12 col-lg-12">
               <div class="card shadow">
                 <div class="card-header palette-2 text-white">
-                  Receitas desse mês
+                  Receitas/Despesas do ano
                 </div>
                 <div class="card-body">
-                  <div class="chart-wrapper d-flex justify-content-center align-items-center" style="max-height: 180px; min-height: 180px">
-                    <barChart/>
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="col-5">
-              <div class="card shadow">
-                <div class="card-header palette-2 text-white text-nowrap" >
-                  <span style="font-size: .93em">Despesas por categorias</span>
-                </div>
-                <div class="card-body">
-                  <div class="chart-wrapper d-flex justify-content-center align-items-center" style="max-height: 180px; min-height: 180px">
-                    <pieChart/>
+                  <div class="chart-wrapper d-flex justify-content-center align-items-center pb-2">
+                    <barChart style="width: 100%" />
                   </div>
                 </div>
               </div>
@@ -36,7 +24,7 @@
             <div class="card-header palette-2 text-white">
               Estatísticas
             </div>
-            <div class="card-body d-flex justify-content-around align-items-center" style="min-height: 212px">
+            <div class="card-body d-flex justify-content-around align-items-center" style="min-height: 340px">
               <div>
                 <div class="fw-bold">Receitas hoje</div>
                 <div class="text-success">
@@ -50,42 +38,42 @@
                 R$ {{despesasHoje}}</div>
               </div>
               <div>
-                <div class="fw-bold">Receita últimos 30 dias</div>
+                <div class="fw-bold">Receitas mês</div>
                 <div class="text-success">
                 <i class="fa-solid fa-plus text-success"></i>
-                R$ 0
+                R$ {{receitasMes}}
                 </div>
                 <hr>
-                <div class="mt-3 fw-bold">Despesa últimos 30 dias</div>
+                <div class="mt-3 fw-bold">Despesas mês</div>
                 <div class="text-danger">
                 <i class="fa-solid fa-minus text-danger"></i>
-                R$ 0</div>
+                R$ {{despesasMes}}</div>
               </div>
               <div>
                 <div class="fw-bold">Receitas totais</div>
                 <div class="text-success">
                 <i class="fa-solid fa-plus text-success"></i>
-                R$ {{receitasHoje}}
+                R$ {{receitasTotal}}
                 </div>
                 <hr>
                 <div class="mt-3 fw-bold">Despesas totais</div>
                 <div class="text-danger">
                 <i class="fa-solid fa-minus text-danger"></i>
-                R$ {{despesasHoje}}</div>
+                R$ {{despesasTotal}}</div>
               </div>
             </div>
           </div>
         </div>
         <div class="col-12 col-lg-6">
-          <div class="card shadow">
-            <div class="card-header palette-2 text-white d-flex justify-content-between">
+          <div class="card shadow" style="max-height: 400px;overflow-y: auto;">
+            <div class="card-header palette-2 text-white d-flex justify-content-between sticky-top">
               <div>
                 <i class="fa-solid fa-calendar-days"></i> Receitas
               </div>
               <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#novaReceita">+ Nova receita</button>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item" v-for="receita in receitas" :key="receita._id">
+              <li class="list-group-item" v-for="receita in receitas.slice().reverse()" :key="receita._id">
                 <i class="fa-solid fa-plus text-success"></i>
 
                 <span class="text-success fw-bold">
@@ -102,7 +90,7 @@
 
               <li class="list-group-item" v-if="receitas.length == 0">Nenhuma receita encontrada!</li>
             </ul>
-            <nav aria-label="Page navigation example">
+            <!-- <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-center mt-3 me-3">
                 <li class="page-item disabled">
                   <a class="page-link"><i class="fa-solid fa-arrow-left"></i></a>
@@ -114,15 +102,15 @@
                   <a class="page-link" href="#"><i class="fa-solid fa-arrow-right"></i></a>
                 </li>
               </ul>
-            </nav>
+            </nav> -->
           </div>
         </div>
 
         <modalReceita/>
 
-        <div class="col-12 col-lg-6">
-          <div class="card shadow">
-            <div class="card-header palette-2 text-white d-flex justify-content-between">
+        <div class="col-12 col-lg-6" >
+          <div class="card shadow" style="max-height: 400px;overflow-y: auto;">
+            <div class="card-header palette-2 text-white d-flex justify-content-between sticky-top">
               <div>
                 <i class="fa-solid fa-circle-minus"></i>
               Despesas
@@ -130,8 +118,8 @@
               <button class="btn-danger btn btn-sm" data-bs-toggle="modal" data-bs-target="#novaDespesa">- Nova despesa</button>
             </div>
             <ul class="list-group list-group-flush">
-              <li class="list-group-item" v-for="despesa in despesas" :key="despesa._id">
-                <i class="fa-solid fa-plus text-danger"></i>
+              <li class="list-group-item" v-for="despesa in despesas.slice().reverse()" :key="despesa._id">
+                <i class="fa-solid fa-minus text-danger"></i>
 
                 <span class="text-minus fw-bold text-danger">
                   R${{despesa.value}}</span> |
@@ -146,7 +134,7 @@
               </li>
               <li class="list-group-item" v-if="despesas.length == 0">Nenhuma despesa encontrada!</li>
             </ul>
-            <nav aria-label="Page navigation example">
+            <!-- <nav aria-label="Page navigation example">
               <ul class="pagination justify-content-center mt-3 me-3">
                 <li class="page-item disabled">
                   <a class="page-link"><i class="fa-solid fa-arrow-left"></i></a>
@@ -158,7 +146,7 @@
                   <a class="page-link" href="#"><i class="fa-solid fa-arrow-right"></i></a>
                 </li>
               </ul>
-            </nav>
+            </nav> -->
           </div>
         </div>
 
@@ -171,7 +159,6 @@
 
 <script>
 import barChart from '../components/charts/barChart.vue'
-import pieChart from '../components/charts/pieChart.vue'
 import modalReceita from '@/components/modalReceita.vue'
 import modalDespesa from '@/components/modalDespesa.vue'
 import headerLayout from '@/components/layouts/headerLayout.vue'
@@ -182,7 +169,6 @@ export default {
   name: 'HomeView',
   components: {
     barChart,
-    pieChart,
     headerLayout,
     modalReceita,
     modalDespesa
@@ -191,8 +177,12 @@ export default {
     return {
       receitas: [],
       despesas: [],
-      receitasHoje: null,
-      despesasHoje: null
+      receitasTotal: 0,
+      despesasTotal: 0,
+      receitasHoje: 0,
+      despesasHoje: 0,
+      receitasMes: 0,
+      despesasMes: 0
     }
   },
   created () {
@@ -209,9 +199,21 @@ export default {
       try {
         const res = await axios.get('https://contabilidade-unit.herokuapp.com/transaction/receitas', headers)
         this.receitas = res.data.transactions
+        this.receitasTotal = 0
+        this.receitasHoje = 0
+        this.receitasMes = 0
+        const dataAtual = new Date()
 
         this.receitas.forEach(e => {
-          this.receitasHoje += e.value
+          this.receitasTotal += e.value
+          const dataReceita = new Date(e.date)
+          if ((dataReceita.getDate() === dataAtual.getDate()) && (dataReceita.getMonth() === dataAtual.getMonth()) && (dataReceita.getFullYear() === dataAtual.getFullYear())) {
+            this.receitasHoje += e.value
+          }
+
+          if ((dataReceita.getMonth() === dataAtual.getMonth()) && (dataReceita.getFullYear() === dataAtual.getFullYear())) {
+            this.receitasMes += e.value
+          }
         })
       } catch (e) {
         console.error(e)
@@ -226,9 +228,20 @@ export default {
       try {
         const res = await axios.get('https://contabilidade-unit.herokuapp.com/transaction/despesas', headers)
         this.despesas = res.data.transactions
+        this.despesasTotal = 0
+        this.despesasHoje = 0
+        this.despesasMes = 0
+        const dataAtual = new Date()
 
         this.despesas.forEach(e => {
-          this.despesasHoje += e.value
+          this.despesasTotal += e.value
+          const dataDespesa = new Date(e.date)
+          if ((dataDespesa.getDate() === dataAtual.getDate()) && (dataDespesa.getMonth() === dataAtual.getMonth()) && (dataDespesa.getFullYear() === dataAtual.getFullYear())) {
+            this.despesasHoje += e.value
+          }
+          if ((dataDespesa.getMonth() === dataAtual.getMonth()) && (dataDespesa.getFullYear() === dataAtual.getFullYear())) {
+            this.despesasMes += e.value
+          }
         })
       } catch (e) {
         console.error(e)

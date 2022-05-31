@@ -10,7 +10,7 @@
           <div class="modal-body">
 
             <label for="valorReceita">Valor da receita</label>
-            <input type="number" class="form-control mb-3" id="valorReceita" v-model="valorReceita" >
+            <input type="number" step="0.01" min="0" class="form-control mb-3" id="valorReceita" v-model="valorReceita" >
 
             <label for="descricaoReceita">Descrição</label>
             <input type="text" class="form-control mb-3" id="descricaoReceita" v-model="descricaoReceita" >
@@ -103,6 +103,7 @@ export default {
           this.categoriaReceita = null
           this.dataReceita = null
           this.$parent.getReceitas()
+          this.$toast.open({ message: 'Nova receita adicionada com sucesso!' })
         })
         .catch((err) => {
           if (err.response) {

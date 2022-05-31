@@ -1,10 +1,13 @@
 <template>
+<div>
   <div class="container my-4">
     <div class="d-flex justify-content-between align-items-center rounded p-3 palette-1">
       <div>
         <span class="logo text-white me-5 d-none d-lg-inline"> {{ data.business }} </span>
         <router-link to="/" class="btn-outline-light btn me-2">Início</router-link>
-        <router-link to="/configuracoes" class="btn-outline-light btn me-2">Configurações</router-link>
+        <router-link to="/ajuda" class="btn-outline-light btn me-2">Ajuda</router-link>
+        <router-link to="/configuracoes" class="btn-outline-light btn me-2 d-lg-none"><i class="fa-solid fa-gears"></i></router-link>
+        <router-link to="/configuracoes" class="btn-outline-light btn me-2 d-none d-lg-inline-block">Configurações</router-link>
       </div>
       <div>
         <div class="dropdown">
@@ -16,6 +19,9 @@
       </div>
     </div>
   </div>
+  <div>
+  </div>
+</div>
 </template>
 
 <script>
@@ -36,6 +42,7 @@ export default {
       e.preventDefault()
       this.$store.commit('logout')
       this.$router.push('/login')
+      this.$toast.open({ message: 'Você saiu da sua conta!', type: 'info' })
     },
     async getUserData () {
       const token = this.$store.getters.token

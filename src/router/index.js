@@ -20,6 +20,14 @@ const routes = [
     }
   },
   {
+    path: '/ajuda',
+    name: 'ajuda',
+    component: () => import(/* webpackChunkName: "HelpView" */ '../views/HelpView.vue'),
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
     path: '/login',
     name: 'login',
     component: () => import(/* webpackChunkName: "LoginView" */ '../views/LoginView.vue'),

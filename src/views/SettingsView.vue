@@ -10,7 +10,7 @@
             </div>
             <div class="card-body">
               <label for="name" class="form-label">Nome da empresa</label>
-              <input type="text" class="form-control mb-3" id="name">
+              <input type="text" v-model="business" class="form-control mb-3" id="name">
 
               <div class="d-flex justify-content-end">
                 <button class="btn btn-primary btn-sm">Alterar</button>
@@ -44,10 +44,10 @@
             </div>
             <div class="card-body">
               <label for="name" class="form-label">Senha atual</label>
-              <input type="text" class="form-control mb-3" id="name">
+              <input type="text" class="form-control mb-3" id="name" v-model="senhaAtual">
 
               <label for="name" class="form-label">Nova senha</label>
-              <input type="text" class="form-control mb-3" id="name">
+              <input type="text" class="form-control mb-3" id="name" v-model="novaSenha">
 
               <div class="d-flex justify-content-end">
                 <button class="btn btn-primary btn-sm">Confirmar</button>
@@ -72,12 +72,65 @@ export default {
   },
   data () {
     return {
+      data: [],
       title: null,
       categoryAlertText: null,
-      categoryAlertClass: null
+      categoryAlertClass: null,
+      business: null
     }
   },
+  created () {
+    this.getUserData()
+  },
   methods: {
+    async getUserData () {
+      const token = this.$store.getters.token
+      const headers = {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+
+      try {
+        const res = await axios.get('https://contabilidade-unit.herokuapp.com/user/', headers)
+        this.data = res.data.msg
+        this.business = this.data.business
+      } catch (e) {
+        console.error(e)
+      }
+    },
+    async updateBusiness (e) {
+      e.preventDefault()
+
+      const data = {
+        business: this.business
+      }
+
+      const token = this.$store.getters.token
+      const headers = {
+        headers: { Authorization: `Bearer ${token}` }
+      }
+
+      axios.put('https://contabilidade-unit.herokuapp.com/auth/business', data, headers)
+        .then((response) => {
+          this.categoryAlertText = response.data.msg
+          this.categoryAlertClass = 'alert alert-success'
+
+          setTimeout(() => {
+            this.categoryAlertText = null
+          }, 3000)
+        })
+        .catch((err) => {
+          if (err.response) {
+            this.categoryAlertText = err.response.data.error
+            this.categoryAlertClass = 'alert alert-danger'
+
+            setTimeout(() => {
+              this.categoryAlertText = null
+            }, 3000)
+          } else {
+            console.log(err)
+          }
+        })
+    },
     async createCategory (e) {
       e.preventDefault()
 

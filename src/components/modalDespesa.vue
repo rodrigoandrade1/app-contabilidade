@@ -10,7 +10,7 @@
           <div class="modal-body">
 
             <label for="valorDespesa">Valor da despesa</label>
-            <input type="number" class="form-control mb-3" id="valorDespesa" v-model="valorDespesa" >
+            <input type="number" step="0.01" min="0" class="form-control mb-3" id="valorDespesa" v-model="valorDespesa" >
 
             <label for="descricaoDespesa">Descrição</label>
             <input type="text" class="form-control mb-3" id="descricaoDespesa" v-model="descricaoDespesa" >
@@ -75,8 +75,8 @@ export default {
     async novaDespesa (e) {
       e.preventDefault()
 
-      if (this.dataReceita != null) {
-        this.jsonDate = new Date(this.dataReceita)
+      if (this.dataDespesa != null) {
+        this.jsonDate = new Date(this.dataDespesa)
       } else {
         this.jsonDate = new Date(Date.now())
       }
@@ -103,6 +103,7 @@ export default {
           this.categoriaDespesa = null
           this.dataDespesa = null
           this.$parent.getDespesas()
+          this.$toast.open({ message: 'Nova despesa adicionada com sucesso!', type: 'info' })
         })
         .catch((err) => {
           if (err.response) {

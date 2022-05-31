@@ -1,7 +1,7 @@
 <template>
   <div class="container ">
     <div class="row ">
-      <div class="col-12 offset-lg-4 col-lg-5 mt-5">
+      <div class="col-12 offset-lg-4 col-lg-4" style="margin-top: 8em">
         <div class="card ">
           <div class="card-header palette-2 text-white">
             Fazer login
@@ -60,14 +60,16 @@ export default {
           this.$store.commit('authenticate', { token: response.data.token, userId: response.data.userId })
           this.alertText = response.data.msg
           this.alertClass = 'alert alert-success'
+          this.$toast.open({ message: response.data.msg })
           setTimeout(() => {
             this.$router.push('/')
-          }, 2000)
+          }, 3000)
         })
         .catch((err) => {
           if (err.response) {
             this.alertText = err.response.data.error
             this.alertClass = 'alert alert-danger'
+            this.$toast.open({ message: err.response.data.error, type: 'info' })
 
             setTimeout(() => {
               this.alertText = null
