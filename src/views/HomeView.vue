@@ -3,7 +3,7 @@
     <header-layout/>
     <div class="container">
       <div class="row g-2">
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6 order-1">
           <div class="row g-2">
             <div class="col-12 col-lg-12">
               <div class="card shadow">
@@ -19,7 +19,7 @@
             </div>
           </div>
         </div>
-        <div class="col-12 col-lg-6">
+        <div class="col-12 col-lg-6 order-2">
           <div class="card shadow">
             <div class="card-header palette-2 text-white">
               Estatísticas

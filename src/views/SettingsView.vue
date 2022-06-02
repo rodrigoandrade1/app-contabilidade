@@ -9,12 +9,18 @@
               Configurações da empresa
             </div>
             <div class="card-body">
-              <label for="name" class="form-label">Nome da empresa</label>
-              <input type="text" v-model="business" class="form-control mb-3" id="name">
+              <form @submit="updateBusiness">
+                <label for="name" class="form-label">Nome da empresa</label>
+                <input type="text" v-model="business" class="form-control mb-3" id="name">
 
-              <div class="d-flex justify-content-end">
-                <button class="btn btn-primary btn-sm">Alterar</button>
-              </div>
+                <div class="d-flex justify-content-end">
+                  <button class="btn btn-primary btn-sm" type="submit">Alterar</button>
+                </div>
+
+                <div v-if="businessAlertText" :class="businessAlertClass + ' mt-2' " role="alert">
+                  {{businessAlertText}}
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -43,16 +49,21 @@
               Alterar senha
             </div>
             <div class="card-body">
-              <label for="name" class="form-label">Senha atual</label>
-              <input type="text" class="form-control mb-3" id="name" v-model="senhaAtual">
+              <form @submit="updateBusiness">
+                <label for="name" class="form-label">Senha atual</label>
+                <input type="text" class="form-control mb-3" id="name" v-model="senhaAtual">
 
-              <label for="name" class="form-label">Nova senha</label>
-              <input type="text" class="form-control mb-3" id="name" v-model="novaSenha">
+                <label for="name" class="form-label">Nova senha</label>
+                <input type="text" class="form-control mb-3" id="name" v-model="novaSenha">
 
-              <div class="d-flex justify-content-end">
-                <button class="btn btn-primary btn-sm">Confirmar</button>
-              </div>
+                <div class="d-flex justify-content-end">
+                  <button class="btn btn-primary btn-sm" type="submit">Confirmar</button>
+                </div>
 
+                <div v-if="businessAlertText" :class="businessAlertClass + ' mt-2' " role="alert">
+                {{businessAlertText}}
+                </div>
+              </form>
             </div>
           </div>
         </div>
@@ -76,6 +87,8 @@ export default {
       title: null,
       categoryAlertText: null,
       categoryAlertClass: null,
+      businessAlertText: null,
+      businessAlertClass: null,
       business: null
     }
   },
