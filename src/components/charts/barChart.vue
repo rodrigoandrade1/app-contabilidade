@@ -150,6 +150,10 @@ export default {
         console.error(e)
       }
     },
+    updateChart () {
+      this.getReceitas()
+      this.getDespesas()
+    },
     async getDespesas () {
       const token = this.$store.getters.token
       const headers = {

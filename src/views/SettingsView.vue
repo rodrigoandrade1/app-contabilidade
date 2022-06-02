@@ -49,21 +49,17 @@
               Alterar senha
             </div>
             <div class="card-body">
-              <form @submit="updateBusiness">
+              <!-- <form> -->
                 <label for="name" class="form-label">Senha atual</label>
-                <input type="text" class="form-control mb-3" id="name" v-model="senhaAtual">
+                <input type="text" class="form-control mb-3" id="name" >
 
                 <label for="name" class="form-label">Nova senha</label>
-                <input type="text" class="form-control mb-3" id="name" v-model="novaSenha">
+                <input type="text" class="form-control mb-3" id="name">
 
                 <div class="d-flex justify-content-end">
                   <button class="btn btn-primary btn-sm" type="submit">Confirmar</button>
                 </div>
-
-                <div v-if="businessAlertText" :class="businessAlertClass + ' mt-2' " role="alert">
-                {{businessAlertText}}
-                </div>
-              </form>
+              <!-- </form> -->
             </div>
           </div>
         </div>
@@ -89,7 +85,7 @@ export default {
       categoryAlertClass: null,
       businessAlertText: null,
       businessAlertClass: null,
-      business: null
+      business: ''
     }
   },
   created () {
@@ -122,22 +118,22 @@ export default {
         headers: { Authorization: `Bearer ${token}` }
       }
 
-      axios.put('https://contabilidade-unit.herokuapp.com/auth/business', data, headers)
+      axios.put('https://contabilidade-unit.herokuapp.com/user/business', data, headers)
         .then((response) => {
-          this.categoryAlertText = response.data.msg
-          this.categoryAlertClass = 'alert alert-success'
+          this.businessAlertText = response.data.msg
+          this.businessAlertClass = 'alert alert-success'
 
           setTimeout(() => {
-            this.categoryAlertText = null
+            this.businessAlertText = null
           }, 3000)
         })
         .catch((err) => {
           if (err.response) {
-            this.categoryAlertText = err.response.data.error
-            this.categoryAlertClass = 'alert alert-danger'
+            this.businessAlertText = err.response.data.error
+            this.businessAlertClass = 'alert alert-danger'
 
             setTimeout(() => {
-              this.categoryAlertText = null
+              this.businessAlertText = null
             }, 3000)
           } else {
             console.log(err)

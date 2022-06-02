@@ -103,6 +103,7 @@ export default {
           this.categoriaReceita = null
           this.dataReceita = null
           this.$parent.getReceitas()
+          this.$parent.updateChart()
           this.$toast.open({ message: 'Nova receita adicionada com sucesso!' })
         })
         .catch((err) => {

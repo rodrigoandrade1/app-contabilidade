@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-body">
                   <div class="chart-wrapper d-flex justify-content-center align-items-center pb-2">
-                    <barChart style="width: 100%" />
+                    <barChart style="width: 100%" ref="barChart"/>
                   </div>
                 </div>
               </div>
@@ -250,6 +250,9 @@ export default {
     getFormatedData (date) {
       const data = new Date(date)
       return (data.getDate() + '/' + (data.getMonth() + 1) + '/' + data.getFullYear() + ' - ' + (('0' + data.getHours()).slice(-2)) + ':' + (('0' + data.getMinutes()).slice(-2)))
+    },
+    updateChart () {
+      this.$refs.barChart.updateChart()
     }
   }
 }

@@ -5,6 +5,80 @@
       <div class="card shadow p-2">
         <div class="accordion" id="accordionExample">
           <div class="accordion-item mt-3 border">
+            <h2 class="accordion-header" id="headingFour">
+              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                Como eu faço para declarar meu imposto de renda?
+              </button>
+            </h2>
+            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+              <div class="accordion-body">
+                  <h4>1 - Baixe o programa</h4>
+                  <p>Antes de começar, a fazer a declaração, baixe e instale o programa da Receita
+                  Federal.<a href="https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf" target="_blank">clique aqui</a> para ver como fazer</p>
+
+                  <h4>2 - Documentação</h4>
+                  <p>Separe seus documentos. Você precisará ter em mãos informes de
+                  rendimentos da empresa em que trabalha, de instituições financeiras e
+                  de outras rendas recebidas no ano passado.</p>
+
+                  <h4>3 - Declaração ou retificação?</h4>
+                  <p>Abra o programa do IR 2022. Na aba &#39;nova&#39;, escolha a opção “Declaração de
+                  ajuste anual”.
+                  Clique em &#39;Iniciar Declaração em Branco&#39;.</p>
+
+                  <h4>4 - Dados cadastrais</h4>
+                  <p>Preencha primeiro os dados pessoais, como endereço e CPF.
+                  Clicando em &#39;Identificação do Contribuinte&#39;, você também deve informar o
+                  número do título eleitoral e a sua ocupação.
+                  No alto da página, clique em &#39;Declaração de Ajuste Anual Original&#39;, que
+                  indica que essa é uma nova declaração. A outra opção, &#39;Declaração
+                  Retificadora&#39;, deve ser usada para enviar uma declaração corrigindo uma
+                  anterior referente ao mesmo ano.</p>
+
+                  <h4>5 - Rendimentos</h4>
+                  <p>Tudo que é informado pelas fontes pagadoras e instituições financeiras precisa
+                  ser declarado. Caso contrário, o contribuinte corre o risco de cair na malha
+                  fina.
+                  Você terá que pegar o informe da sua empresa e do banco e declarar os
+                  rendimentos do ano passado. Na ficha &quot;Rendimentos tributáveis recebidos de
+                  PJ pelo Titular&quot;, precisam ser informadas todas as fontes pagadoras e todos os
+                  valores recebidos em 2021.
+                  Rendimentos isentos e não tributáveis, como bolsas de estudo e ganhos com a
+                  poupança, devem ser informados em ficha específica.
+                  Já os rendimentos com aplicações financeiras e participação nos lucros e
+                  resultados devem ser informados na ficha &quot;Rendimentos sujeitos à tributação
+                  exclusiva&quot;.</p>
+
+                  <h4>6 - Bens e direitos</h4>
+                  <p>Aplicações financeiras, saldo em conta corrente e bens como imóveis e
+                  veículos devem ser informados na ficha &quot;Bens e direitos”, com o valor em
+                  reais em 31 de dezembro de 2020 e no final de 2021.</p>
+
+                  <h4>7 - Pagamentos efetuados</h4>
+                  <p>Os gastos com despesas dedutíveis e que podem ser comprovadas, como
+                  pagamentos com saúde e educação, devem ser declarados na ficha
+                  “Pagamentos efetuados”, e precisam ser informados o CNPJ ou CPF da
+                  instituição ou do profissional.</p>
+
+                  <h4>8 - Verifique pendências</h4>
+                  <p>Existe um botão &quot;verificar pendências&quot;. Caso algum campo obrigatório não
+                  tenha sido preenchido, o próprio programa fará o alerta e mostrará o que
+                  precisa ser corrigido.</p>
+
+                  <h4>9 - Completa ou simplificada</h4>
+                  <p>O último passo é escolher o modelo de tributação: por deduções legais, a
+                  chamada completa, ou por desconto simplificado. O próprio programa indica a
+                  opção mais vantajosa. Ou seja, que oferece maior valor de restituição ou
+                  menor valor de imposto a pagar.</p>
+
+                  <h4>10 - Conta para restituição</h4>
+                  <p>Para os contribuintes com direito à restituição, o sistema pede que seja
+                  informado o banco, a agência e conta corrente para o depósito. Já para quem
+                  tiver imposto a pagar, pode optar em parcelar em até 8 cotas.</p>
+              </div>
+            </div>
+          </div>
+          <div class="accordion-item mt-3 border">
             <h2 class="accordion-header" id="headingOne">
               <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                 Como administrar melhor a minha vida financeira?
@@ -13,7 +87,7 @@
             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
               <div class="accordion-body">
                   <h4>1. Conheça seu dinheiro</h4>
-                  <p>é preciso levar em conta suas receitas e despesas, incluindo o que é fixo e o que
+                  <p>É preciso levar em conta suas receitas e despesas, incluindo o que é fixo e o que
                   varia.</p>
 
                   <h4>2. Descubra gastos supérfluos</h4>
@@ -105,80 +179,6 @@
 
                   <h4>Demonstrações financeiras</h4>
                   <p>As demonstrações financeiras são relatórios que indicam o desempenho financeiro da empresa em um determinado período de tempo</p>
-              </div>
-            </div>
-          </div>
-          <div class="accordion-item mt-3 border">
-            <h2 class="accordion-header" id="headingFour">
-              <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                Como eu faço para declarar meu imposto de renda?
-              </button>
-            </h2>
-            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
-              <div class="accordion-body">
-                  <h4>1 - Baixe o programa</h4>
-                  <p>Antes de começar, a fazer a declaração, baixe e instale o programa da Receita
-                  Federal.<a href="https://www.gov.br/receitafederal/pt-br/centrais-de-conteudo/download/pgd/dirpf" target="_blank">clique aqui</a> para ver como fazer</p>
-
-                  <h4>2 - Documentação</h4>
-                  <p>Separe seus documentos. Você precisará ter em mãos informes de
-                  rendimentos da empresa em que trabalha, de instituições financeiras e
-                  de outras rendas recebidas no ano passado.</p>
-
-                  <h4>3 - Declaração ou retificação?</h4>
-                  <p>Abra o programa do IR 2022. Na aba &#39;nova&#39;, escolha a opção “Declaração de
-                  ajuste anual”.
-                  Clique em &#39;Iniciar Declaração em Branco&#39;.</p>
-
-                  <h4>4 - Dados cadastrais</h4>
-                  <p>Preencha primeiro os dados pessoais, como endereço e CPF.
-                  Clicando em &#39;Identificação do Contribuinte&#39;, você também deve informar o
-                  número do título eleitoral e a sua ocupação.
-                  No alto da página, clique em &#39;Declaração de Ajuste Anual Original&#39;, que
-                  indica que essa é uma nova declaração. A outra opção, &#39;Declaração
-                  Retificadora&#39;, deve ser usada para enviar uma declaração corrigindo uma
-                  anterior referente ao mesmo ano.</p>
-
-                  <h4>5 - Rendimentos</h4>
-                  <p>Tudo que é informado pelas fontes pagadoras e instituições financeiras precisa
-                  ser declarado. Caso contrário, o contribuinte corre o risco de cair na malha
-                  fina.
-                  Você terá que pegar o informe da sua empresa e do banco e declarar os
-                  rendimentos do ano passado. Na ficha &quot;Rendimentos tributáveis recebidos de
-                  PJ pelo Titular&quot;, precisam ser informadas todas as fontes pagadoras e todos os
-                  valores recebidos em 2021.
-                  Rendimentos isentos e não tributáveis, como bolsas de estudo e ganhos com a
-                  poupança, devem ser informados em ficha específica.
-                  Já os rendimentos com aplicações financeiras e participação nos lucros e
-                  resultados devem ser informados na ficha &quot;Rendimentos sujeitos à tributação
-                  exclusiva&quot;.</p>
-
-                  <h4>6 - Bens e direitos</h4>
-                  <p>Aplicações financeiras, saldo em conta corrente e bens como imóveis e
-                  veículos devem ser informados na ficha &quot;Bens e direitos”, com o valor em
-                  reais em 31 de dezembro de 2020 e no final de 2021.</p>
-
-                  <h4>7 - Pagamentos efetuados</h4>
-                  <p>Os gastos com despesas dedutíveis e que podem ser comprovadas, como
-                  pagamentos com saúde e educação, devem ser declarados na ficha
-                  “Pagamentos efetuados”, e precisam ser informados o CNPJ ou CPF da
-                  instituição ou do profissional.</p>
-
-                  <h4>8 - Verifique pendências</h4>
-                  <p>Existe um botão &quot;verificar pendências&quot;. Caso algum campo obrigatório não
-                  tenha sido preenchido, o próprio programa fará o alerta e mostrará o que
-                  precisa ser corrigido.</p>
-
-                  <h4>9 - Completa ou simplificada</h4>
-                  <p>O último passo é escolher o modelo de tributação: por deduções legais, a
-                  chamada completa, ou por desconto simplificado. O próprio programa indica a
-                  opção mais vantajosa. Ou seja, que oferece maior valor de restituição ou
-                  menor valor de imposto a pagar.</p>
-
-                  <h4>10 - Conta para restituição</h4>
-                  <p>Para os contribuintes com direito à restituição, o sistema pede que seja
-                  informado o banco, a agência e conta corrente para o depósito. Já para quem
-                  tiver imposto a pagar, pode optar em parcelar em até 8 cotas.</p>
               </div>
             </div>
           </div>

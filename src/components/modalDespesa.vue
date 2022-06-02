@@ -104,6 +104,7 @@ export default {
           this.dataDespesa = null
           this.$parent.getDespesas()
           this.$toast.open({ message: 'Nova despesa adicionada com sucesso!', type: 'info' })
+          this.$parent.updateChart()
         })
         .catch((err) => {
           if (err.response) {
